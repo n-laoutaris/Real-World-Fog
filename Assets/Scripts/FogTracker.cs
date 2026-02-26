@@ -72,7 +72,7 @@ public class FogTracker : MonoBehaviour
 
     private void UpdateShader()
     {
-        // Cap the loop at our GPU array limit (100)
+        // Cap the loop at our GPU array limit
         int count = Mathf.Min(_savedPoints.Count, 100);
         int startIndex = _savedPoints.Count - count;
 

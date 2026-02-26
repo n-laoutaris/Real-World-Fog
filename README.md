@@ -2,6 +2,8 @@
 
 A location-based Android app that gamifies physical exploration using real-time GPS signal processing and a persistent Fog of War overlay.
 
+![Demo Screenshot](./Images/Demo.png)
+
 ## Inspiration
 
 I love long walks and exploring my city. However, my inner "optimizer" always ends up defaulting to the exact same, most efficient route every time I leave the house. I built this app to break that habit.

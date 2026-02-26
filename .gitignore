@@ -74,3 +74,6 @@ crashlytics-build.properties
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
 /Real World Fog_BackUpThisFolder_ButDontShipItWithYourGame
+/Packages/mapbox-unity-sdk-develop
+/Real World Fog_BurstDebugInformation_DoNotShip
+/Assets/Samples

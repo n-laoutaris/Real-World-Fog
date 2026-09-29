@@ -74,13 +74,21 @@ crashlytics-build.properties
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
 
-# Mapbox SDK backup folders
+# Mapbox build byproducts (backup + Burst debug folders next to the APK)
 /Real World Fog_BackUpThisFolder_ButDontShipItWithYourGame
 /Real World Fog_BurstDebugInformation_DoNotShip
 
-# Temporarily ignored until directory cleanup
+# Third-party code, intentionally excluded.
+# - The vendored Mapbox SDK (locally modified)
+# - Imported Mapbox samples. Anything we adopt from them gets moved into Assets/Scripts/.
 /Packages/mapbox-unity-sdk-develop
 /Assets/Samples
 
-# Other manual ignores
+# Unity auto-generates these XSD schemas for UI Builder autocompletion
+/UIElementsSchema/
+
+# Secrets: holds the Mapbox access token
 Assets/Resources/Mapbox/MapboxConfiguration.txt
+
+# Docs, just for me
+/Docs/

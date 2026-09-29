@@ -848,7 +848,7 @@ MonoBehaviour:
   _updateInterval: 0
   _sendEvent: 0
   _startLatitudeLongitude: 37.919429,23.729575
-  _moveSpeed: 50
+  _moveSpeed: 20
 --- !u!1 &877329825
 GameObject:
   m_ObjectHideFlags: 0
@@ -1525,10 +1525,9 @@ GameObject:
   - component: {fileID: 1326738089}
   - component: {fileID: 1326738088}
   - component: {fileID: 1326738090}
-  - component: {fileID: 1326738091}
   - component: {fileID: 1326738092}
-  - component: {fileID: 1326738093}
   - component: {fileID: 1326738094}
+  - component: {fileID: 1326738095}
   m_Layer: 0
   m_Name: CameraRoot
   m_TagString: Untagged
@@ -1579,19 +1578,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Speed: 1
---- !u!114 &1326738091
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1326738087}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5edccbffe1c39494f91d03df5d6bf98e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: '::'
-  mapCamera: {fileID: 985205834}
 --- !u!114 &1326738092
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1607,23 +1593,6 @@ MonoBehaviour:
   target: {fileID: 4601729577895354}
   smoothSpeed: 5
   snapThreshold: 0.1
---- !u!114 &1326738093
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1326738087}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6441cab8ef0a4f84aa62ddc3f2fea6b7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: '::'
-  mapCamera: {fileID: 985205834}
-  minOrthoSize: 100
-  maxOrthoSize: 600
-  keyboardZoomSpeed: 200
-  touchPinchSpeed: 0.2
 --- !u!114 &1326738094
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1641,6 +1610,24 @@ MonoBehaviour:
   _fogMaterial: {fileID: 2100000, guid: b22c65e647af4344cb1eb17d787ae7a6, type: 2}
   revealRadius: 25
   dropDistance: 5
+  maxAccuracy: 10
+--- !u!114 &1326738095
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1326738087}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ec25ead19b9bf349bd660d1ae3fac7e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MapGestures
+  mapCamera: {fileID: 985205834}
+  minOrthoSize: 100
+  maxOrthoSize: 600
+  keyboardZoomSpeed: 200
+  scrollZoomStep: 0.1
 --- !u!1001 &1339385649
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3469,7 +3456,8 @@ MonoBehaviour:
   MapBehaviour: {fileID: 1316629399}
   Target: {fileID: 220147485}
   CharacterAnimator: {fileID: 95022964805116576}
-  Speed: 1
+  SpeedMetersPerSecond: 10
+  TeleportDistanceMeters: 20
   SnapToTerrain: 0
 --- !u!119 &119216057008654646
 Projector:

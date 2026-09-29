@@ -33,15 +33,21 @@ namespace Mapbox.LocationModule
             // Failsafe in case no keyboard is connected
             if (Keyboard.current == null) return;
 
-            // 1 meter is roughly 0.000009 degrees of Latitude/Longitude
-            double degreesPerSecond = (_moveSpeed * 0.000009) * Time.deltaTime;
+            // 1 meter is roughly 0.000009 degrees of Latitude (1 degree of latitude is ~111 km everywhere)
+            double latDegreesPerSecond = (_moveSpeed * 0.000009) * Time.deltaTime;
+
+            // Longitude lines converge towards the poles, so 1 degree of longitude is only
+            // 111 km * cos(latitude) long (~88 km in Athens). To cover the same real meters
+            // east-west as north-south, we need MORE degrees: divide by cos(latitude).
+            // Without this, WASD moved ~21% slower horizontally than vertically.
+            double lngDegreesPerSecond = latDegreesPerSecond / Math.Cos(_latLng.Latitude * Math.PI / 180.0);
 
             // Modify the mathematical coordinates directly based on key presses
-            if (Keyboard.current.wKey.isPressed) _latLng.Latitude += degreesPerSecond;
-            if (Keyboard.current.sKey.isPressed) _latLng.Latitude -= degreesPerSecond;
+            if (Keyboard.current.wKey.isPressed) _latLng.Latitude += latDegreesPerSecond;
+            if (Keyboard.current.sKey.isPressed) _latLng.Latitude -= latDegreesPerSecond;
 
-            if (Keyboard.current.dKey.isPressed) _latLng.Longitude += degreesPerSecond;
-            if (Keyboard.current.aKey.isPressed) _latLng.Longitude -= degreesPerSecond;
+            if (Keyboard.current.dKey.isPressed) _latLng.Longitude += lngDegreesPerSecond;
+            if (Keyboard.current.aKey.isPressed) _latLng.Longitude -= lngDegreesPerSecond;
         }
 #endif
 

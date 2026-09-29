@@ -48,7 +48,9 @@ Shader "Custom/URPWorldFog"
             half4 frag(Varyings input) : SV_Target
             {
                 float alpha = _FogColor.a;
-                float softness = 5.0; // Creates a 5-meter soft fade edge
+                // Soft fade edge width. NOTE: in Unity units, not real meters (5 units ~ 3.9m in Athens).
+                // _RevealRadius arrives already converted to units by FogTracker.
+                float softness = 5.0;
 
                 // Loop through our list of points
                 for(int i = 0; i < _PointCount; i++)
